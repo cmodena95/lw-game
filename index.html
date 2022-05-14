@@ -23,8 +23,36 @@
 
 
 document.addEventListener('keydown', logKey);
+const wagon = document.querySelector('.wagon');
+let step = 0
+let stepy = 0
+let stepx = 600
+
+function diagonal(e) {
+  stepx = stepx + 5;
+  stepy = stepy + 5;
+  wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+}
 
 function logKey(e) {
-  console.log('heeello');
+  e.view.event.preventDefault();
+  if (e.keyCode == 39) {
+    step = step + 5
+    wagon.style.transform = `translateX(${step}px)`
+
+    const style = getComputedStyle(wagon);
+    const position = style.transform;
+    console.log(position);
+
+    if (position == 'matrix(1, 0, 0, 1, 600, 0)') {
+      // while (position != 'matrix(1, 0, 0, 1, 835, 151') {
+        document.addEventListener('keydown', diagonal)
+        // translate(835px, 151px)
+      // }
+    }
+  } else if (e.keyCode == 37) {
+    step = step - 5
+    wagon.style.transform = `translateX(${step}px)`
+  }
 }
 </script>

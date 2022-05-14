@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  position: relative;
+}
+
+.background {
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.wagon {
+  position: absolute;
+  top: 4%;
+  left: 0;
+  height: 5%;
+}
+
+.sagrada-familia {
+  position: absolute;
+  height: 17%;
+  top: 3%;
+  right: 0;
+}
+
+.top-tree {
+  position: absolute;
+  top: 15%;
+  left: 0;
+}
+
+.torre {
+  position: absolute;
+  top: 23%;
+  left: 25%;
+  height: 18%;
+}
+
+.arc {
+  position: absolute;
+  top: 46%;
+  right: 0;
+}
+
+.mid-trees { 
+  position: absolute;
+  top: 70%;
+  left: 12%;
+}
+
+.bottom-tree {
+  position: absolute;
+  top: 81%;
+  left: 52%;
+}

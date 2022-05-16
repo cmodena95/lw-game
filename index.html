@@ -32,99 +32,108 @@
     wagon.style.top = "200px";
   }
 
+  let stepy = 0;
+  let stepx = 0;
+
 
   function drive(e) {
     e.view.event.preventDefault();
     let positionLeft = getComputedStyle(wagon).left;
     let positionTop = getComputedStyle(wagon).top;
-    if (positionTop == '200px') {
-      road1(e);
-    }
-  }
-
-  function road1(e) {
-    position = getComputedStyle(wagon).transform;
-    if (e.keyCode == 39 && position == 'matrix(-1, 0, 0, 1, 190, 190)') {
-      console.log('stop');
-    } else if (e.keyCode == 39) {
-      let positionLeft = getComputedStyle(wagon).left;
-      if (positionLeft == '660px') {
-        diagonalRight();
-      } else {
-        moveRight();
-      }
-    } else if (e.keyCode == 37) {
-      position = getComputedStyle(wagon).transform;
-      if (position == 'matrix(-1, 0, 0, 1, 190, 190)') {
-        document.addEventListener('keydown', road2);
-      }
-    }
-  }
-
-
-  function road2(e) {
-    position = getComputedStyle(wagon).transform;
-    positionTop = getComputedStyle(wagon).top;
-    if (e.keyCode == 37 && position == 'matrix(-1, 0, 0, 1, -530, 430)' && positionTop == '400px') {
-      wagon.style.transform = 'matrix(1, 0, 0, 1, -530, 430)';
-      document.removeEventListener('keydown', road2);
-      document.addEventListener('keydown', road3);
-    } else if (e.keyCode == 37 && position == 'matrix(-1, 0, 0, 1, -530, 430)') {
-      moveDown(e);
-    } else if (e.keyCode == 37) {
-      console.log('driving');
-      stepx = stepx - 30;
-      stepy = stepy + 10;
-      wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
-    }
-  }
-
-  function road3(e) {
-    position = getComputedStyle(wagon).transform;
-    if (e.keyCode == 37) {
-      console.log('stop');
-    } else if (e.keyCode == 39) {
-      document.addEventListener('keydown', moveRight);
-    }
-  }
-
-
-  // diagonals
-  let stepy = 0;
-  let stepx = 0;
-
-  function diagonalRight(e) {
-    stepx = stepx + 10;
-    stepy = stepy + 10;
-    wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
-
     let position = getComputedStyle(wagon).transform;
-    if (position == 'matrix(1, 0, 0, 1, 190, 190)') {
-      wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+
+    if (e.keyCode == 40) {
+      let position = getComputedStyle(wagon).transform;
+      positionLeft = getComputedStyle(wagon).left;
+      positionTop = getComputedStyle(wagon).top;
+
+
+
+      
+      if (wagon.getAttribute("id") == "right-7") {
+        stepx = stepx + 20;
+        stepy = stepy + 2;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+      } else if (position == 'matrix(1, 0, 0, 1, 280, 682)' && positionTop == '1600px') {
+        wagon.setAttribute("id", "right-7");
+      } else if (position == 'matrix(-1, 0, 0, 1, 280, 682)' && positionLeft == '-80px' || position == 'matrix(1, 0, 0, 1, 280, 682)') {
+        wagon.style.transform = 'translate(280px, 682px)';
+        moveDown(e);
+      } else if (positionTop == '1220px' && positionLeft == '-80px') {
+        stepx = stepx - 20;
+        stepy = stepy + 2;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+      } else if (position == 'matrix(1, 0, 0, 1, 1000, 610)' || position == 'matrix(-1, 0, 0, 1, 1000, 610)') {
+        wagon.style.transform = 'translate(1000px, 610px) scaleX(-1)';
+        moveDown(e);
+      } else if (positionTop == '1000px' && positionLeft == '-80px') {
+        wagon.removeAttribute("id");
+        stepx = stepx + 20;
+        stepy = stepy + 3;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+      } else if (wagon.getAttribute("id") == "down-4") {
+        moveDown(e);
+      } else if (positionLeft == '-80px' && positionTop == '700px') {
+        wagon.style.transform = 'translate(220px, 493px)';
+        wagon.removeAttribute("id");
+        wagon.setAttribute("id", "down-4");
+      } else if (wagon.getAttribute("id") == "left-4") {
+        moveLeft(e);
+      } else if (position == 'matrix(1, 0, 0, 1, 220, 493)' && positionLeft == '660px' && positionTop == '700px') {
+        wagon.style.transform = 'translate(220px, 493px) scaleX(-1)';
+        wagon.removeAttribute("id");
+        wagon.setAttribute("id", "left-4");
+      } else if (position == 'matrix(1, 0, 0, 1, 220, 493)') {
+        moveDown(e);
+      } else if (wagon.getAttribute("id") == "right-3") {
+        // moveRight(e);
+        stepx = stepx + 20;
+        stepy = stepy + 2;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+      } else if (position == 'matrix(-1, 0, 0, 1, -560, 415)' && positionLeft == '660px' && positionTop == '420px') {
+        wagon.style.transform = 'translate(-560px, 415px)'
+        wagon.setAttribute("id", "right-3");
+      } else if (positionTop == '380px' && positionLeft == '660px' && position == 'matrix(-1, 0, 0, 1, -550, 451)') {
+        wagon.setAttribute("id", "right-3");
+      } else if (position == 'matrix(-1, 0, 0, 1, -560, 415)') {
+        wagon.removeAttribute("id");
+        moveDown(e);
+      } else if (wagon.getAttribute("id") == "left-2") {
+        stepx = stepx - 20;
+        stepy = stepy + 5;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+        let position = getComputedStyle(wagon).transform; 
+      } else if (position == 'matrix(1, 0, 0, 1, 220, 220)') {
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+        wagon.setAttribute("id", "left-2");
+      } else if (positionTop == '200px' && positionLeft == '660px') {
+        stepx = stepx + 10;
+        stepy = stepy + 10;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+        let position = getComputedStyle(wagon).transform; 
+      } else if (positionTop == '200px') {
+        moveRight(e);
+      }
     }
   }
 
 
 
-  // moving
+  // wagon.style.transform = 'translate(190px, 190px) scaleX(-1)';
+
   function moveLeft(e) {
-    let positionLeft = getComputedStyle(wagon).left;
-    if (positionLeft == '0px') {
-      console.log('stop');
-    } else {
-      wagon.style.left = parseInt(wagon.style.left) - 20 + "px";
-    }
+    wagon.style.left = parseInt(wagon.style.left) - 20 + "px";
   }
 
-  function moveRight(e) {
-    wagon.style.left = parseInt(wagon.style.left) + 20 + "px";
-  }
-
-  function moveUp(e) {
+  function moveUp() {
     wagon.style.top = parseInt(wagon.style.top) - 20 + "px";
   }
 
-  function moveDown(e) {
+  function moveRight() {
+    wagon.style.left = parseInt(wagon.style.left) + 20 + "px";
+  }
+
+  function moveDown() {
     wagon.style.top = parseInt(wagon.style.top) + 20 + "px";
   }
 

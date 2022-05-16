@@ -63,13 +63,31 @@
 
 
   function road2(e) {
-    if (e.keyCode == 37) {
+    position = getComputedStyle(wagon).transform;
+    positionTop = getComputedStyle(wagon).top;
+    if (e.keyCode == 37 && position == 'matrix(-1, 0, 0, 1, -530, 430)' && positionTop == '400px') {
+      wagon.style.transform = 'matrix(1, 0, 0, 1, -530, 430)';
+      document.removeEventListener('keydown', road2);
+      document.addEventListener('keydown', road3);
+    } else if (e.keyCode == 37 && position == 'matrix(-1, 0, 0, 1, -530, 430)') {
+      moveDown(e);
+    } else if (e.keyCode == 37) {
       console.log('driving');
-      stepx = stepx + 10;
+      stepx = stepx - 30;
       stepy = stepy + 10;
       wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
     }
   }
+
+  function road3(e) {
+    position = getComputedStyle(wagon).transform;
+    if (e.keyCode == 37) {
+      console.log('stop');
+    } else if (e.keyCode == 39) {
+      document.addEventListener('keydown', moveRight);
+    }
+  }
+
 
   // diagonals
   let stepy = 0;
@@ -85,6 +103,8 @@
       wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
     }
   }
+
+
 
   // moving
   function moveLeft(e) {

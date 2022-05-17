@@ -47,8 +47,66 @@
       positionLeft = getComputedStyle(wagon).left;
       positionTop = getComputedStyle(wagon).top;
 
-      if (wagon.getAttribute("id") == "right-9") {
-        console.log('hello');
+      if (wagon.getAttribute("id") == "left-14-diagonal") {
+        stepx = stepx - 10;
+        stepy = stepy + 20;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+      } else if (position == 'matrix(-1, 0, 0, 1, 1872, 2738)' && positionLeft == '-1700px') {
+        wagon.setAttribute("id", "left-14-diagonal");
+      } else if (position == 'matrix(1, 0, 0, 1, 1872, 2738)' && positionTop == '1880px' || position == 'matrix(-1, 0, 0, 1, 1872, 2738)' && positionTop == '1880px') {
+        wagon.removeAttribute("id");
+        wagon.style.transform = 'translate(1872px, 2738px) scaleX(-1)';
+        moveLeft(e);
+      } else if (wagon.getAttribute("id") == "right-13-diagonal") {
+        stepx = stepx + 10;
+        stepy = stepy + 10;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+      } else if (position == 'matrix(1, 0, 0, 1, 1632, 2498)' && positionTop == '1880px' && positionLeft == '-800px') {
+        wagon.setAttribute("id", "right-13-diagonal");
+      } else if (position == 'matrix(-1, 0, 0, 1, 1632, 2498)' || position == 'matrix(1, 0, 0, 1, 1632, 2498)') {
+        wagon.removeAttribute("id");
+        wagon.style.transform = 'translate(1632px, 2498px)';
+        moveRight(e);
+      } else if (wagon.getAttribute("id") == "left-13-diagonal") {
+        stepx = stepx - 5;
+        stepy = stepy + 10;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+      } else if (position == 'matrix(-1, 0, 0, 1, 1772, 2218)' && positionTop == '1880px' && positionLeft == '-1480px') {
+        wagon.setAttribute("id", "left-13-diagonal");
+      } else if (position == 'matrix(1, 0, 0, 1, 1772, 2218)' || position == 'matrix(-1, 0, 0, 1, 1772, 2218)') {
+        wagon.removeAttribute("id");
+        wagon.style.transform = 'translate(1772px, 2218px) scaleX(-1)';
+        moveLeft(e);
+      } else if (wagon.getAttribute("id") == "right-12-diagonal") {
+        stepx = stepx + 3;
+        stepy = stepy + 10;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+      } else if (positionTop == '1880px' && positionLeft == '-720px' && position == 'matrix(1, 0, 0, 1, 1664, 1858)') {
+        wagon.setAttribute("id", "right-12-diagonal");
+      } else if (position == 'matrix(1, 0, 0, 1, 1664, 1858)') {
+        wagon.removeAttribute("id");
+        moveRight(e);
+      } else if (wagon.getAttribute("id") == "right-11-diagonal") {
+        stepx = stepx + 10;
+        stepy = stepy + 10;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+      } else if (position == 'matrix(-1, 0, 0, 1, 1544, 1738)') {
+        wagon.setAttribute("id", "right-11-diagonal");
+      } else if (positionLeft == '-1380px' && positionTop == '1880px') {
+        stepx = stepx - 10;
+        stepy = stepy + 20;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+      } else if (position == 'matrix(-1, 0, 0, 1, 1674, 1478)') {
+        wagon.removeAttribute("id");
+        moveLeft(e);
+      } else if (wagon.getAttribute("id") == "left-10-diagonal") {
+        stepx = stepx - 5;
+        stepy = stepy + 20;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+      } else if (position == 'matrix(1, 0, 0, 1, 1744, 1198)') {
+        wagon.removeAttribute("id");
+        wagon.setAttribute("id", "left-10-diagonal");
+      } else if (wagon.getAttribute("id") == "right-9") {
         stepx = stepx + 20;
         stepy = stepy + 5;
         wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;

@@ -21,6 +21,7 @@ body {
   left: 0;
   height: 250px;
   width: 370px;
+  z-index: 1;
 }
 
 .tyre1 {
@@ -40,12 +41,14 @@ body {
   transition: 0.5s;
   animation-duration: 1.5s;
   animation-iteration-count: 1;
+  z-index: 2;
 }
 
 .top-tree {
   position: absolute;
   top: 15%;
-  left: 0;
+  left: 0;  
+  z-index: 2;
 }
 
 .torre {
@@ -57,6 +60,7 @@ body {
   transition: 0.5s;
   animation-duration: 2.5s;
   animation-iteration-count: 1;
+  z-index: 3;
 }
 
 .arc {
@@ -64,18 +68,21 @@ body {
   top: 46%;
   right: 0;
   transform: translateX(850px);
+  z-index: 4;
 }
 
 .mid-trees { 
   position: absolute;
   top: 70%;
   left: 12%;
+  z-index: 5;
 }
 
 .bottom-tree {
   position: absolute;
   top: 81%;
   left: 52%;
+  z-index: 6;
 }
 
 
@@ -152,7 +159,8 @@ h2 {
   animation: backInRight;
   animation-duration: 1.5s;
   animation-iteration-count: 1;
-  transform: translateX(0px) rotate(5deg);
+  transform: translateX(0px) rotate(5deg) !important;
+  opacity: 1;
 }
 
 .fact-1-in {
@@ -210,7 +218,7 @@ h2 {
 
 .fact-2-in {
   background-color: #F9D923;
-  color: #30AADD;
+  color: #43919B;
   padding: 30px;
   font-family: 'Neucha', cursive;
   font-size: 28px;
@@ -344,9 +352,10 @@ h2 {
 .fact-5-out {
   background-color: #475B63;
   position: absolute;
-  top: 90%;
+  top: 91.5%;
   left: 15%;
   transform: translateX(2000px) rotate(5deg);
+  opacity: 1;
 }
 
 

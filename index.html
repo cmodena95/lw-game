@@ -124,6 +124,7 @@
       } else if (position == 'matrix(1, 0, 0, 1, 220, 493)' && positionLeft == '-80px' && positionTop == '920px') {
         torre.classList.add('bounce-torre');
       } else if (position == 'matrix(-1, 0, 0, 1, 220, 493)' && positionLeft == '360px' && positionTop == '700px') {
+        wagon.style.zIndex = 3;
         fact1.classList.add('backin-right');
       } else if (position == 'matrix(1, 0, 0, 1, 180, 180)') {
         sagrada.classList.add('bounce-sagrada');
@@ -147,6 +148,7 @@
         wagon.setAttribute("id", "right-13-diagonal");
       } else if (position == 'matrix(-1, 0, 0, 1, 1632, 2498)' || position == 'matrix(1, 0, 0, 1, 1632, 2498)') {
         wagon.removeAttribute("id");
+        wagon.style.zIndex = 7;
         wagon.style.transform = 'translate(1632px, 2498px)';
         moveRight(e);
       } else if (wagon.getAttribute("id") == "left-13-diagonal") {
@@ -156,6 +158,7 @@
       } else if (position == 'matrix(-1, 0, 0, 1, 1772, 2218)' && positionTop == '1880px' && positionLeft == '-1480px') {
         wagon.setAttribute("id", "left-13-diagonal");
       } else if (position == 'matrix(1, 0, 0, 1, 1772, 2218)' || position == 'matrix(-1, 0, 0, 1, 1772, 2218)') {
+        wagon.style.zIndex = 6;
         wagon.removeAttribute("id");
         wagon.style.transform = 'translate(1772px, 2218px) scaleX(-1)';
         moveLeft(e);
@@ -196,10 +199,12 @@
         wagon.removeAttribute("id");
         wagon.style.transform = 'translate(994px, 998px)';
         wagon.setAttribute("id", "right-9");
+        wagon.style.zIndex = 5;
       } else if (positionLeft == '-780px' && positionTop == '1880px') {
         stepx = stepx - 8;
         stepy = stepy + 20;
         wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+        wagon.style.zIndex = 3;
       } else if (positionTop == '1880px') {
         wagon.style.transform = 'translate(1040px, 758px) scaleX(-1)';
         moveLeft(e);
@@ -216,6 +221,7 @@
         wagon.style.transform = 'translate(280px, 682px)';
         moveDown(e);
       } else if (positionTop == '1220px' && positionLeft == '-80px') {
+        wagon.style.zIndex = 4;
         stepx = stepx - 20;
         stepy = stepy + 2;
         wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;

@@ -6,27 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neucha&family=Patrick+Hand&display=swap" rel="stylesheet">
   </head>
   <body onkeydown="drive(event)">
     <img src="images/background.jpg" class="background">
-    <img src="images/wagon.png" class="wagon">
+    <!-- <img src="images/wagon.png" class="wagon1"> -->
+    <div class="wagon1">
+      <img src="images/tyre2.png" class="tyre1">
+      <img src="images/tyre2.png" class="tyre2">
+    </div>
     <img src="images/sagradafamilia.png" class="sagrada-familia">
     <img src="images/top-tree.png" class="top-tree">
+
+    <div class="fact-1-out">
+      <div class="fact-1-in">
+        <h2>Le Wagon Barcelona was launched in October 2016</h2>
+      </div>
+    </div>
+    
     <img src="images/torre.png" class="torre">
+
+    <div class="fact-2-out">
+      <div class="fact-2-in">
+        <h2>445 students have graduated to date</h2>
+      </div>
+    </div>
+
     <img src="images/arc.png" class="arc">
+
+    <div class="fact-3-out">
+      <div class="fact-3-in">
+        <h2>Franchise bought in March 2021</h2>
+      </div>
+    </div>
+
     <img src="images/mid-trees.png" class="mid-trees">
+
+    <div class="fact-4-out">
+      <div class="fact-4-in">
+        <h2>Franchise bought in March 2021</h2>
+      </div>
+    </div>
+
     <img src="images/bottom-tree.png" class="bottom-tree">
+
+    <div class="fact-5-out">
+      <div class="fact-5-in">
+        <h2>Franchise bought in March 2021</h2>
+      </div>
+    </div>
   </body>
 </html>
 
 <script>
-  let wagon = document.querySelector('.wagon');
+  // monuments
+  const sagrada = document.querySelector('.sagrada-familia');
+  const topTree = document.querySelector('.top-tree');
+  const torre = document.querySelector('.torre');
+  const arc = document.querySelector('.arc');
+  const midTrees = document.querySelector('.mid-trees');
+  const bottomTree = document.querySelector('.bottom-tree');
+
+  // wagon
+  let wagon = document.querySelector('.wagon1');
   const style = getComputedStyle(wagon);
   let positionLeft = style.left;
   let positionTop = style.top;
 
+  let tyre1 = document.querySelector('.tyre1');
+  let tyre2 = document.querySelector('.tyre2');
+
+  let fact1 = document.querySelector('.fact-1-out');
+  let fact2 = document.querySelector('.fact-2-out');
+  let fact3 = document.querySelector('.fact-3-out');
+  let fact4 = document.querySelector('.fact-4-out');
+  let fact5 = document.querySelector('.fact-5-out');
+
   function init() {
-    wagon = document.querySelector(".wagon");
+    wagon = document.querySelector(".wagon1");
     wagon.style.position = "absolute";
     wagon.style.left = "0px";
     wagon.style.top = "200px";
@@ -34,7 +93,7 @@
 
   let stepy = 0;
   let stepx = 0;
-
+  let roll = 0;
 
   function drive(e) {
     e.view.event.preventDefault();
@@ -43,9 +102,32 @@
     let position = getComputedStyle(wagon).transform;
 
     if (e.keyCode == 40) {
+      roll = roll + 75;
+      tyre1.style.transform = `translate(41px, 139px) scale(0.7) rotate(${roll}deg)`;
+      tyre2.style.transform = `translate(90px, 136px) scale(0.7) rotate(${roll}deg)`;
+
+
       let position = getComputedStyle(wagon).transform;
       positionLeft = getComputedStyle(wagon).left;
       positionTop = getComputedStyle(wagon).top;
+
+      if (position == 'matrix(1, 0, 0, 1, 1632, 2498)' && positionTop == '1880px' && positionLeft == '-1040px') {
+        fact5.classList.add('backin-right');
+      } else if (position == 'matrix(1, 0, 0, 1, 1664, 1858)' && positionTop == '1880px' && positionLeft == '-860px') {
+        fact4.classList.add('lightspeed-in-right');
+      } else if (position == 'matrix(1, 0, 0, 1, 1424, 1118)' && positionTop == '1880px' && positionLeft == '-780px') {
+        fact3.classList.add('rollin');
+      } else if (position == 'matrix(-1, 0, 0, 1, 1040, 758)' && positionLeft == '-280px' && positionTop == '1880px') {
+        arc.classList.add('bounce-arc');
+      } else if (position == 'matrix(-1, 0, 0, 1, 980, 612)' && positionTop == '1220px' && positionLeft == '-80px') {
+        fact2.classList.add('zoomin-right');
+      } else if (position == 'matrix(1, 0, 0, 1, 220, 493)' && positionLeft == '-80px' && positionTop == '920px') {
+        torre.classList.add('bounce-torre');
+      } else if (position == 'matrix(-1, 0, 0, 1, 220, 493)' && positionLeft == '360px' && positionTop == '700px') {
+        fact1.classList.add('backin-right');
+      } else if (position == 'matrix(1, 0, 0, 1, 180, 180)') {
+        sagrada.classList.add('bounce-sagrada');
+      }
 
       if (wagon.getAttribute("id") == "left-14-diagonal") {
         stepx = stepx - 10;
@@ -191,10 +273,6 @@
     }
   }
 
-
-
-  // wagon.style.transform = 'translate(190px, 190px) scaleX(-1)';
-
   function moveLeft(e) {
     wagon.style.left = parseInt(wagon.style.left) - 20 + "px";
   }
@@ -211,11 +289,6 @@
     wagon.style.top = parseInt(wagon.style.top) + 20 + "px";
   }
 
+
   window.onload = init;
 </script>
-
-<!-- road 1: -->
-<!-- if left is less than 0, don't move -->
-<!-- if top is higher than X or lower than Y, don't move -->
-<!-- turning: if right is higher than X, flip and move diagonally -->
-<!-- if top is lower than X, move left -->

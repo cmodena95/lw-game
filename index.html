@@ -103,6 +103,7 @@
 
     if (e.keyCode == 40) {
       roll = roll + 75;
+
       tyre1.style.transform = `translate(41px, 139px) scale(0.7) rotate(${roll}deg)`;
       tyre2.style.transform = `translate(90px, 136px) scale(0.7) rotate(${roll}deg)`;
 
@@ -130,7 +131,11 @@
         sagrada.classList.add('bounce-sagrada');
       }
 
-      if (wagon.getAttribute("id") == "left-14-diagonal") {
+      if (position == 'matrix(-1, 0, 0, 1, 1822, 2838)' && positionTop == '1880px' && positionLeft == '-1700px') {
+        console.log('stop');
+        tyre1.style.transform = `translate(41px, 139px) scale(0.7)`;
+        tyre2.style.transform = `translate(90px, 136px) scale(0.7)`;
+      } else if (wagon.getAttribute("id") == "left-14-diagonal") {
         stepx = stepx - 10;
         stepy = stepy + 20;
         wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
@@ -165,7 +170,7 @@
       } else if (wagon.getAttribute("id") == "right-12-diagonal") {
         stepx = stepx + 3;
         stepy = stepy + 10;
-        wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
       } else if (positionTop == '1880px' && positionLeft == '-720px' && position == 'matrix(1, 0, 0, 1, 1664, 1858)') {
         wagon.setAttribute("id", "right-12-diagonal");
       } else if (position == 'matrix(1, 0, 0, 1, 1664, 1858)') {
@@ -195,21 +200,21 @@
         stepx = stepx + 20;
         stepy = stepy + 5;
         wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
-      } else if (position == 'matrix(-1, 0, 0, 1, 944, 998)') {
+      } else if (position == 'matrix(1, 0, 0, 1, 944, 998)') {
         wagon.removeAttribute("id");
-        wagon.style.transform = 'translate(994px, 998px)';
+        // wagon.style.transform = 'translate(994px, 998px)';
         wagon.setAttribute("id", "right-9");
         wagon.style.zIndex = 5;
       } else if (positionLeft == '-780px' && positionTop == '1880px') {
         stepx = stepx - 8;
         stepy = stepy + 20;
-        wagon.style.transform = `translate(${stepx}px, ${stepy}px) scaleX(-1)`;
+        wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
         wagon.style.zIndex = 3;
       } else if (positionTop == '1880px') {
         wagon.style.transform = 'translate(1040px, 758px) scaleX(-1)';
         moveLeft(e);
       } else if (position == 'matrix(1, 0, 0, 1, 1040, 758)' || position == 'matrix(-1, 0, 0, 1, 1040, 758)') {
-        wagon.style.transform = 'translate(1040px, 758px)'
+        wagon.style.transform = 'translate(1040px, 758px) scaleX(-1)'
         moveDown(e);
       } else if (wagon.getAttribute("id") == "right-7") {
         stepx = stepx + 20;
@@ -241,23 +246,26 @@
         wagon.setAttribute("id", "down-4");
       } else if (wagon.getAttribute("id") == "left-4") {
         moveLeft(e);
-      } else if (position == 'matrix(1, 0, 0, 1, 220, 493)' && positionLeft == '660px' && positionTop == '700px') {
-        wagon.style.transform = 'translate(220px, 493px) scaleX(-1)';
+      } else if (position == 'matrix(-1, 0, 0, 1, 220, 493)' && positionLeft == '660px' && positionTop == '700px') {
+        // wagon.style.transform = 'translate(220px, 493px) scaleX(-1)';
         wagon.removeAttribute("id");
         wagon.setAttribute("id", "left-4");
-      } else if (position == 'matrix(1, 0, 0, 1, 220, 493)') {
+      } else if (position == 'matrix(1, 0, 0, 1, 220, 493)' || position == 'matrix(-1, 0, 0, 1, 220, 493)') {
+        wagon.style.transform = `translate(220px, 493px) scaleX(-1)`;
         moveDown(e);
       } else if (wagon.getAttribute("id") == "right-3") {
         // moveRight(e);
         stepx = stepx + 20;
         stepy = stepy + 2;
         wagon.style.transform = `translate(${stepx}px, ${stepy}px)`;
+        sagrada.style.zIndex = 0;
       } else if (position == 'matrix(-1, 0, 0, 1, -560, 415)' && positionLeft == '660px' && positionTop == '420px') {
         wagon.style.transform = 'translate(-560px, 415px)'
         wagon.setAttribute("id", "right-3");
-      } else if (positionTop == '380px' && positionLeft == '660px' && position == 'matrix(-1, 0, 0, 1, -550, 451)') {
+      } else if (positionTop == '380px' && positionLeft == '660px' && position == 'matrix(1, 0, 0, 1, -560, 415)') {
         wagon.setAttribute("id", "right-3");
-      } else if (position == 'matrix(-1, 0, 0, 1, -560, 415)') {
+      } else if (position == 'matrix(-1, 0, 0, 1, -560, 415)' || position == 'matrix(1, 0, 0, 1, -560, 415)') {
+        wagon.style.transform = `translate(-560px, 415px)`;
         wagon.removeAttribute("id");
         moveDown(e);
       } else if (wagon.getAttribute("id") == "left-2") {
